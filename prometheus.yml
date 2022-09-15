@@ -58,8 +58,8 @@ scrape_configs:
         module: [http_2xx]
     static_configs:
         - targets:
-            - https://sosafernando.com
-            - https://pillacurioso.com
+            - https://www.infobae.com
+            - https://www.lanacion.com.ar
 
 
     relabel_configs:
