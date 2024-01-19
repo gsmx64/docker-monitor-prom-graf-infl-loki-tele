@@ -120,11 +120,13 @@ services:
       - influxdb
     ports:
     - '8125:8125'
+    env_file:
+      - 'env.telegraf'
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf
     networks:
       - monitoreo_apps
       - monitoreo_default
-    volumes:
-      - ./telegraf.conf:/etc/telegraf/telegraf.conf
 
   influxdb:
     image: influxdb:latest
