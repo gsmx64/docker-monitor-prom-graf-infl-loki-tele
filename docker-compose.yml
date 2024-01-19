@@ -16,8 +16,6 @@ services:
     image: ubuntu/alertmanager:0.25.0-22.04_stable
     container_name: alertmanager-container
     restart: unless-stopped
-    volumes:
-    - ./loki-config.yml:/etc/loki/local-config.yaml
     ports:
     - 9093:9093
     environment:
