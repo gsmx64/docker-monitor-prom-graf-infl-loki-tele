@@ -74,9 +74,9 @@ services:
     networks:
       - monitoreo_apps
 
-  nexus_exporter:
+  nexus-exporter:
     image: ocadotechnology/nexus-exporter:latest
-    container_name: nexus_exporter
+    container_name: nexus-exporter
     restart: unless-stopped
     ports:
     - 9184:9184
@@ -119,7 +119,7 @@ services:
     links:
       - influxdb
     ports:
-    - '8125:8125'
+    - 8125:8125
     env_file:
       - 'env.telegraf'
     volumes:
@@ -133,7 +133,7 @@ services:
           #image: influxdb:1.8.10
     container_name: influxdb
     ports:
-      - "8086:8086"
+      - 8086:8086
     env_file:
       - 'env.influxdb'
     volumes:

@@ -33,7 +33,7 @@ scrape_configs:
   - job_name: 'nexus3'
     metrics_path: /
     static_configs:
-     - targets: ['nexus_exporter:9184']
+     - targets: ['nexus-exporter:9184']
 
   - job_name: 'influxdb'
     metrics_path: /metrics
