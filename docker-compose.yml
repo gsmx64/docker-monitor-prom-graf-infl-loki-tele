@@ -22,7 +22,8 @@ services:
       - TZ=UTC
     volumes:
     - ./alertmanager.yml:/alertmanager.yml
-    command: --config.file=/alertmanager.yml --log.level=debug
+    command: 
+    - '--config.file=/etc/alertmanager/alertmanager.yml --log.level=debug'
     networks:
       - monitoreo_apps
 
@@ -33,7 +34,7 @@ services:
     volumes:
     - ./loki-config.yml:/etc/loki/local-config.yaml
     command:
-    - -config.file=/etc/loki/local-config.yaml
+    - '--config.file=/etc/loki/local-config.yaml'
     ports:
     - 3100:3100
     networks:
