@@ -12,6 +12,30 @@ services:
     networks:
       - monitoreo_apps
 
+  alertmanager:
+    image: ubuntu/alertmanager:latest
+    container_name: alertmanager
+    restart: unless-stopped
+    volumes:
+    - ./loki-config.yml:/etc/loki/local-config.yaml
+    ports:
+    - 9093:9093
+    environment:
+      - TZ=UTC
+    networks:
+      - monitoreo_apps
+
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    restart: unless-stopped
+    volumes:
+    - ./loki-config.yml:/etc/loki/local-config.yaml
+    ports:
+    - 3100:3100
+    networks:
+      - monitoreo_apps
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
