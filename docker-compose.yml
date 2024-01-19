@@ -9,6 +9,8 @@ services:
     - grafana-data:/var/lib/grafana
     ports:
     - 3001:3000
+    networks:
+      - monitoreo_apps
 
   prometheus:
     image: prom/prometheus:latest
@@ -26,6 +28,8 @@ services:
     - '--storage.tsdb.path=/prometheus'
     - '--storage.tsdb.retention.time=1y'
     - '--web.enable-lifecycle'
+    networks:
+      - monitoreo_apps
 
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -38,6 +42,8 @@ services:
     pid: host
     volumes:
     - '/:/host:ro,rslave'
+    networks:
+      - monitoreo_apps
 
   nexus_exporter:
     image: ocadotechnology/nexus-exporter:latest
@@ -47,6 +53,8 @@ services:
     - 9184:9184
     env_file:
       - 'env.nexus_exporter'
+    networks:
+      - monitoreo_apps
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -59,6 +67,8 @@ services:
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitoreo_apps
 
   blackbox:
     image: prom/blackbox-exporter:latest
@@ -68,6 +78,8 @@ services:
       - ./blackbox.yml:/etc/blackbox_exporter/config.yml
     ports:
       - 9115:9115
+    networks:
+      - monitoreo_apps
 
   telegraf:
     image: telegraf:latest
@@ -80,6 +92,7 @@ services:
     ports:
     - '8125:8125'
     networks:
+      - monitoreo_apps
       - monitoreo_default
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
@@ -95,6 +108,7 @@ services:
     volumes:
       - ./data_influxdb:/var/lib/influxdb
     networks:
+      - monitoreo_apps
       - monitoreo_default
 
 volumes:
@@ -102,5 +116,6 @@ volumes:
   prometheus-data:
 
 networks:
+  monitoreo_apps:
   monitoreo_default:
     external: true
