@@ -19,6 +19,8 @@ services:
     - prometheus-data:/prometheus
     ports:
     - 9090:9090
+    environment:
+      - DISCOURSE_PROMETHEUS_WEBSERVER_BIND='*'
     command:
     - '--config.file=/etc/prometheus/prometheus.yml'
     - '--storage.tsdb.path=/prometheus'
@@ -83,7 +85,7 @@ services:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:1.8.10
           #image: influxdb:1.8.3
     container_name: influxdb
     ports:
