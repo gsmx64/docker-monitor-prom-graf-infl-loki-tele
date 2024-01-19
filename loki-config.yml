@@ -51,9 +51,6 @@ table_manager:
   retention_deletes_enabled: true # true para que limite storage
   retention_period: 2160h #3 meses
 
-wal:
-  dir: '/tmp/wal'
-
 ruler:
   storage:
     type: local

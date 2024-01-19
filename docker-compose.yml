@@ -21,14 +21,12 @@ services:
     environment:
       - TZ=UTC
     volumes:
-    - ./alertmanager.yml:/alertmanager.yml
-    command: 
-    - '--config.file=/etc/alertmanager/alertmanager.yml --log.level=debug'
+    - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
     networks:
       - monitoreo_apps
 
   loki:
-    image: grafana/loki:2.9.2
+    image: grafana/loki:2.9.3
     container_name: loki
     restart: unless-stopped
     volumes:
