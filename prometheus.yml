@@ -9,26 +9,26 @@ scrape_configs:
 
   - job_name: 'cadvisor'
     static_configs:
-    - targets: ['cadvisor:8080']
+    - targets: ['cadvisor:8880']
 
   - job_name: 'node_exporter'
     static_configs:
     - targets: ['node_exporter:9100']
 
   - job_name: 'jenkins_metrics'
-    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/metrics?pretty=true
+    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/metrics
     scrape_interval: 5s
     static_configs:
      - targets: ['jenkins:8080']
 
   - job_name: 'jenkins_threads'
-    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/threads?pretty=true
+    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/threads
     scrape_interval: 5s
     static_configs:
      - targets: ['jenkins:8080']
 
   - job_name: 'jenkins_healthcheck'
-    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/healthcheck?pretty=true
+    metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/healthcheck
     scrape_interval: 5s
     static_configs:
      - targets: ['jenkins:8080']
