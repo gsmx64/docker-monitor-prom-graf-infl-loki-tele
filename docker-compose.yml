@@ -12,9 +12,9 @@ services:
     networks:
       - monitoreo_apps
 
-  alertmanager:
-    image: ubuntu/alertmanager:latest
-    container_name: alertmanager
+  alertmanager-container:
+    image: ubuntu/alertmanager:0.25.0-22.04_stable
+    container_name: alertmanager-container
     restart: unless-stopped
     volumes:
     - ./loki-config.yml:/etc/loki/local-config.yaml
@@ -26,7 +26,7 @@ services:
       - monitoreo_apps
 
   loki:
-    image: grafana/loki:latest
+    image: grafana/loki:main
     container_name: loki
     restart: unless-stopped
     volumes:
