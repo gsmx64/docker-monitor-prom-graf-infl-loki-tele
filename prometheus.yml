@@ -19,19 +19,19 @@ scrape_configs:
     metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/metrics?pretty=true
     scrape_interval: 5s
     static_configs:
-     - targets: ['Jenkins:8080']
+     - targets: ['jenkins:8080']
 
   - job_name: 'jenkins_threads'
     metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/threads?pretty=true
     scrape_interval: 5s
     static_configs:
-     - targets: ['Jenkins:8080']
+     - targets: ['jenkins:8080']
 
   - job_name: 'jenkins_healthcheck'
     metrics_path: metrics/az3-g-e0AUeKXaMJrG84rBL5MObrToMx6XnizPkHSwG1eRt-YCuoHWE2I0XLL1ZF/healthcheck?pretty=true
     scrape_interval: 5s
     static_configs:
-     - targets: ['Jenkins:8080']
+     - targets: ['jenkins:8080']
 
   - job_name: 'nexus3'
     scrape_interval: 5s
@@ -43,7 +43,7 @@ scrape_configs:
     static_configs:
      - targets: ['nexus:8082']
 
-  - job_name: 'Influxdb'
+  - job_name: 'influxdb'
     scrape_interval: 5s
     static_configs:
      - targets: ['influxdb:8086']
