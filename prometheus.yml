@@ -8,7 +8,8 @@ alerting:
         - targets:
            - alertmanager-container:9093
 rule_files:
-  - 'prometheus.rules.yml'
+  - 'prometheus.rules.host.yml'
+  - 'prometheus.rules.host.docker.yml'
 
 scrape_configs:
   - job_name: 'prometheus'
