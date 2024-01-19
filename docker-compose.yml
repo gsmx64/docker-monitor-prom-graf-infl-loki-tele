@@ -37,6 +37,15 @@ services:
     volumes:
     - '/:/host:ro,rslave'
 
+  nexus_exporter:
+    image: ocadotechnology/nexus-exporter:latest
+    container_name: nexus_exporter
+    restart: unless-stopped
+    ports:
+    - 9184:9184
+    env_file:
+      - 'env.nexus_exporter'
+
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
@@ -62,8 +71,12 @@ services:
     image: telegraf:latest
           #    image: telegraf:1.16.3
     container_name: telegraf
+    depends_on:
+      - influxdb
     links:
       - influxdb
+    ports:
+    - '8125:8125'
     networks:
       - monitoreo_default
     volumes:
